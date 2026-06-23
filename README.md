@@ -1,74 +1,232 @@
 # UserAnalyticsApp
 
-A simple user analytics dashboard with React, Node.js, Express, and MongoDB.
+A modern full-stack User Analytics Dashboard built with React, Node.js, Express, and MongoDB. The platform collects user interaction events and visualizes them through professional analytics dashboards, charts, funnels, heatmaps, and session insights.
 
-## Project structure
+---
 
-- `backend/` — Express API and MongoDB data layer
-- `frontend/` — Vite + React dashboard
-- `tracker/` — event tracking starter script
+## Features
 
-## Setup
+### Core Analytics
 
-### Backend
+* Real-time event tracking
+* Page view monitoring
+* Click tracking
+* Session analytics
+* User activity timeline
+* Top visited pages
+* Session details explorer
+* Heatmap visualization
+* API-driven analytics dashboard
 
-1. Open `backend/`.
-2. Copy `.env` or use `backend/.env.example`.
-3. Install dependencies:
-   ```bash
-   cd backend
-   npm install
-   ```
-4. Run the backend:
-   ```bash
-   npm start
-   ```
+---
+
+## Advanced Dashboard Visualizations
+
+### User Growth Trend
+
+Track user growth over time using interactive line charts.
+
+Features:
+
+* Daily Active Users
+* Weekly Active Users
+* Monthly Active Users
+* Trend comparison
+
+---
+
+### Events Breakdown
+
+Visualize event distribution using pie charts.
+
+Supported Events:
+
+* Page Views
+* Clicks
+* Signups
+* Purchases
+* Custom Events
+
+---
+
+### Active Hours Analytics
+
+Identify peak engagement periods.
+
+Displays:
+
+* Visits by Hour
+* Most Active Time Slots
+* User Traffic Patterns
+
+---
+
+### Device Analytics
+
+Analyze visitors by device type.
+
+Supported Categories:
+
+* Desktop
+* Mobile
+* Tablet
+
+Visualization:
+
+* Donut Chart
+* Percentage Distribution
+
+---
+
+### User Location Insights
+
+Track geographical audience distribution.
+
+Displays:
+
+* Top Countries
+* Top Regions
+* Visitor Percentages
+* Location Ranking
+
+---
+
+### Most Clicked Elements
+
+Track engagement on UI components.
+
+Examples:
+
+* Buy Buttons
+* CTA Buttons
+* Navigation Links
+* Product Cards
+* Login Buttons
+
+---
+
+### Session Duration Analysis
+
+Measure user engagement quality.
+
+Categories:
+
+* 0–1 Minute
+* 1–5 Minutes
+* 5–10 Minutes
+* 10+ Minutes
+
+---
+
+### Conversion Funnel
+
+Visualize user journey through the application.
+
+Flow Example:
+
+Visitor
+↓
+Page View
+↓
+Product View
+↓
+Add To Cart
+↓
+Checkout
+↓
+Purchase
+
+---
+
+### Top Referrers
+
+Analyze traffic sources.
+
+Examples:
+
+* Google
+* LinkedIn
+* Twitter/X
+* Facebook
+* Direct Traffic
+
+---
+
+### Recent Activity Feed
+
+Live timeline of user actions.
+
+Examples:
+
+* User viewed product
+* User clicked CTA
+* User started checkout
+* User completed purchase
+
+---
+
+## Project Structure
+
+```text
+UserAnalyticsApp/
+│
+├── backend/
+│   ├── models/
+│   ├── routes/
+│   ├── controllers/
+│   ├── middleware/
+│   ├── server.js
+│   └── .env
+│
+├── frontend/
+│   ├── src/
+│   │   ├── components/
+│   │   ├── charts/
+│   │   ├── pages/
+│   │   ├── services/
+│   │   └── App.jsx
+│   │
+│   └── vite.config.js
+│
+├── tracker/
+│   └── tracker.js
+│
+├── demo-page/
+│   ├── assets/
+│   └── index.html
+│
+└── README.md
+```
+
+---
+
+## Technology Stack
 
 ### Frontend
 
-1. Open `frontend/`.
-2. Install dependencies:
-   ```bash
-   cd frontend
-   npm install
-   ```
-3. Run the frontend:
-   ```bash
-   npm run dev
-   ```
+* React.js
+* Vite
+* Recharts
+* Axios
+* CSS3
 
-## Notes
+### Backend
 
-- The frontend uses `VITE_API_BASE_URL` if configured.
-- Backend API health check is available at `/api/health`.
-- The backend exposes analytics, sessions, top pages, session details, and heatmap endpoints.
-- The `demo-page` is a separate sample page that sends `page_view` and `click` events to the backend.
-- The dashboard is the same app that reads those events from the backend and displays them.
- - To generate demo events, open `demo-page/index.html` in the browser or serve it via Live Server.
- - The demo page loads `tracker/tracker.js`, which sends events to `http://localhost:5000/api/track`.
- - Each event is saved into MongoDB with the schema defined in `backend/models/Event.js`.
+* Node.js
+* Express.js
+* MongoDB
+* Mongoose
 
-Demo (simplified)
-------------------
+### Tracking
 
-- The demo has been simplified to the essentials: a minimal product list and interactions that generate `page_view` and `click` events. See `demo-page/index.html`.
-- Local images are stored under `demo-page/assets/` (SVG files) so the demo is fully offline-friendly.
-- The demo page includes the tracker script at `tracker/tracker.js` which posts to `http://localhost:5000/api/track` by default.
+* Custom JavaScript Tracker
+* REST API Event Collection
 
-Serving and testing the demo
-1. Serve the project root so the demo page can load the tracker script correctly:
+---
 
-```bash
-npx http-server . -p 5500
-```
+## Setup
 
-2. Open the demo in your browser:
-
-```
-http://127.0.0.1:5500/demo-page/index.html
-```
-
-3. Start the backend (ensure MongoDB is running locally or configured via `MONGO_URI`):
+### Backend Setup
 
 ```bash
 cd backend
@@ -76,6 +234,150 @@ npm install
 npm start
 ```
 
-4. Open the dashboard (Vite dev server), usually at `http://localhost:5173/`, and open the demo in another tab to generate events and watch them appear in Sessions/Top Pages/Heatmap.
+Backend runs on:
 
-If your frontend dev server runs on a different port, update the "Back to Dashboard" link in `demo-page/index.html` to match the dashboard URL.
+```text
+http://localhost:5000
+```
+
+Health Check:
+
+```text
+http://localhost:5000/api/health
+```
+
+---
+
+### Frontend Setup
+
+```bash
+cd frontend
+npm install
+npm run dev
+```
+
+Frontend runs on:
+
+```text
+http://localhost:5173
+```
+
+---
+
+## Environment Variables
+
+Backend `.env`
+
+```env
+PORT=5000
+MONGO_URI=mongodb://localhost:27017/useranalytics
+```
+
+Frontend `.env`
+
+```env
+VITE_API_BASE_URL=http://localhost:5000/api
+```
+
+---
+
+## Event Tracking
+
+The tracker automatically captures:
+
+* Page Views
+* Click Events
+* Product Interactions
+* User Sessions
+
+Example:
+
+```javascript
+trackEvent("page_view", {
+  page: window.location.pathname
+});
+
+trackEvent("click", {
+  element: "buy_button"
+});
+```
+
+---
+
+## Demo Application
+
+A lightweight demo application is included to generate analytics data.
+
+### Start Demo Server
+
+```bash
+npx http-server . -p 5500
+```
+
+### Open Demo
+
+```text
+http://127.0.0.1:5500/demo-page/index.html
+```
+
+### Tracker Integration
+
+```html
+<script src="../tracker/tracker.js"></script>
+```
+
+Events are sent to:
+
+```text
+http://localhost:5000/api/track
+```
+
+---
+
+## Dashboard Widgets
+
+Current Dashboard Includes:
+
+* KPI Cards
+* User Growth Line Chart
+* Event Breakdown Pie Chart
+* Active Hours Bar Chart
+* Device Analytics Donut Chart
+* Conversion Funnel
+* User Locations
+* Session Duration Histogram
+* Most Clicked Elements Table
+* Top Referrers Chart
+* Recent Activity Feed
+* Heatmap Visualization
+* Session Explorer
+
+---
+
+## Future Enhancements
+
+* Real-time WebSocket Updates
+* AI-Based User Insights
+* Predictive Analytics
+* Cohort Analysis
+* User Segmentation
+* Export Reports (PDF/Excel)
+* Dark Mode
+* Role-Based Access Control
+* Cloud Deployment
+* Multi-Tenant Analytics
+
+---
+
+## Author
+
+Srivatsav
+
+B.Tech Information Technology
+
+Full Stack Developer | AI/ML Enthusiast | Data Analytics
+
+---
+
+## License
+Srivatsav Parasaram
