@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Demo — Essentials Only</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+
+  <body>
+
+    <header class="nav simple">
+      <div class="brand">UserAnalytics Demo</div>
+      <div class="nav-actions">
+        <a class="nav-back" href="http://localhost:5173/" target="_blank" rel="noreferrer">Back to Dashboard</a>
+        <button id="cart-btn" class="cart-btn" aria-label="Open cart">Cart <span id="cart-count" class="cart-count">0</span></button>
+      </div>
+    </header>
+
+    <main class="container">
+      <section class="hero compact">
+        <h1>Demo — Essentials</h1>
+        <p class="lead">Interact with this page to generate <strong>page_view</strong> and <strong>click</strong> events for the dashboard.</p>
+        <p><a class="cta" href="#products" id="explore-btn">Explore Products</a></p>
+      </section>
+
+      <section id="products" class="products-section">
+        <h2 class="section-title">Featured Products</h2>
+        <div class="products">
+        <article class="product" tabindex="0" data-id="chair" data-name="Comfy Chair">
+          <img src="assets/chair.svg" alt="Comfy chair" class="product-img" />
+          <h3>Comfy Chair</h3>
+          <div class="product-actions">
+            <button class="btn primary add-to-cart" data-product-id="chair" data-product-name="Comfy Chair">Add to Cart</button>
+            <button class="btn view-product" data-product-id="chair" data-product-name="Comfy Chair">View</button>
+          </div>
+        </article>
+
+        <article class="product" tabindex="0" data-id="lamp" data-name="Desk Lamp">
+          <img src="assets/lamp.svg" alt="Desk lamp" class="product-img" />
+          <h3>Desk Lamp</h3>
+          <div class="product-actions">
+            <button class="btn primary add-to-cart" data-product-id="lamp" data-product-name="Desk Lamp">Add to Cart</button>
+            <button class="btn view-product" data-product-id="lamp" data-product-name="Desk Lamp">View</button>
+          </div>
+        </article>
+
+        <article class="product" tabindex="0" data-id="mouse" data-name="Wireless Mouse">
+          <img src="assets/mouse.svg" alt="Wireless mouse" class="product-img" />
+          <h3>Wireless Mouse</h3>
+          <div class="product-actions">
+            <button class="btn primary add-to-cart" data-product-id="mouse" data-product-name="Wireless Mouse">Add to Cart</button>
+            <button class="btn view-product" data-product-id="mouse" data-product-name="Wireless Mouse">View</button>
+          </div>
+        </article>
+        </div>
+      </section>
+
+    </main>
+
+    <footer class="footer compact">
+      <small>Tracker: <code>tracker/tracker.js</code> — posts to <code>http://localhost:5000/api/track</code></small>
+    </footer>
+
+    <div id="product-modal" class="modal" aria-hidden="true">
+      <div class="modal-panel">
+        <button id="modal-close" class="modal-close" aria-label="Close">×</button>
+        <div id="modal-content"></div>
+      </div>
+    </div>
+
+    <script src="../tracker/tracker.js"></script>
+    <script src="script.js"></script>
+  </body>
+  </html>
